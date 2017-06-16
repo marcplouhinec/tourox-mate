@@ -55,7 +55,7 @@ then see something like this:
 ![3D model - assembled box](3dmodel/assembled_box.png?raw=true "3D model - assembled box")
 
 Before printing the case, you need to generate [STL files](https://en.wikipedia.org/wiki/STL_(file_format)). To do that,
-scroll the text editor to the bottom of the `3dmodel/Box.scad` file:
+scroll the text editor to the bottom of the file `3dmodel/Box.scad`:
 
     //rotate([0, 180, 0])
     Box_assembled(includeBackCover = true, includeFrontCover = true, includeComponents = false);
@@ -102,6 +102,14 @@ You should then see something like this:
 ![3D model - brand name](3dmodel/brand_name.png?raw=true "3D model - brand name")
 
 Then render it and export it as `brand_name.stl`.
+
+You can then use your favorite tools to generate [G-code](https://en.wikipedia.org/wiki/G-code) for each STL file and
+send them to your 3D printer, with tools like [Slic3r](http://slic3r.org/) +
+[Printrun](http://www.pronterface.com/) or [Cura](https://ultimaker.com/en/products/cura-software).
+
+If you are lucky, the result should look like this:
+
+![3D printed cases](3dmodel/3d_printed_cases.jpg?raw=true "3D printed cases")
 
 ### Wiring
 Comming soon...
