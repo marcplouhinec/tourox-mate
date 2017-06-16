@@ -37,4 +37,74 @@ two [tactile buttons](https://www.adafruit.com/product/367),
 and a [SPDT Slide Switch](https://www.adafruit.com/product/805).
 
 ## Building steps
+
+### Case 3D printing
+The case as been designed with [OpenSCAD](http://www.openscad.org/), a tool that allows developers to create
+3D models with a scripting language. It is free and available on most operating systems. The advantages of using a
+scripting language instead of a graphical mouse-controlled CAD software like [Thingiverse](https://www.thingiverse.com/)
+is that it is very easy to parametrize (for example sizes and positions can be saved in variables and used by
+several parts of the code, which is useful for connectors or components that need to fit together),
+it is [VCS-friendly](https://en.wikipedia.org/wiki/Version_control) (for example
+difference between several versions of a script can be easily visualized on GitHub) and reusable
+[part libraries](https://github.com/openscad/openscad/wiki/Libraries) can be shared on internet. The main disadvantage
+is that is it harder to use, especially for beginners.
+
+In order to visualize the 3D model, setup OpenSCAD on your computer and open the `3dmodel/Box.scad` file. You should
+then see something like this:
+
+![3D model - assembled box](3dmodel/assembled_box.png?raw=true "3D model - assembled box")
+
+Before printing the case, you need to generate [STL files](https://en.wikipedia.org/wiki/STL_(file_format)). To do that,
+scroll the text editor to the bottom of the `3dmodel/Box.scad` file:
+
+    //rotate([0, 180, 0])
+    Box_assembled(includeBackCover = true, includeFrontCover = true, includeComponents = false);
+
+These two lines generate the assembled box, which cannot be used directly. Modify these two lines like this:
+
+    //rotate([0, 180, 0])
+    Box_assembled(includeBackCover = true, includeFrontCover = false, includeComponents = false);
+
+You should then see the following 3D model, which is the back cover:
+
+![3D model - back cover](3dmodel/back_cover.png?raw=true "3D model - back cover")
+
+Then render it and export it as `back_cover.stl`.
+
+In order to generate the front cover, modify the last two lines like this:
+
+    rotate([0, 180, 0])
+    Box_assembled(includeBackCover = false, includeFrontCover = true, includeComponents = false);
+
+You should then see the following 3D model:
+
+![3D model - front cover](3dmodel/front_cover.png?raw=true "3D model - front cover")
+
+Then render it and export it as `front_cover.stl`.
+
+Finally, if you want, generate the brand label by opening the file `3dmodel/BrandName.scad`, and modify the last
+lines like this:
+
+    /*
+    difference() {
+        BrandName_frame(1, true);
+        BrandName_frame(1, false);
+    }*/
+    
+    rotate([0, 180, 0])
+        difference() {
+            BrandName_coloredBrandName(1, true);
+            BrandName_coloredBrandName(1, false);
+        }
+
+You should then see something like this:
+
+![3D model - brand name](3dmodel/brand_name.png?raw=true "3D model - brand name")
+
+Then render it and export it as `brand_name.stl`.
+
+### Wiring
+Comming soon...
+
+### Compile and flash the firmware
 Comming soon...
