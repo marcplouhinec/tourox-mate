@@ -68,6 +68,29 @@ To solve some missing header file errors:
 
 ## Compile the firmware
 
+### Compile and flash for the RedBearLab Nano board
+A detailed tutorial about how to compile and flash the board is [available here](http://redbearlab.com/nrf51822-sdk).
+
+To prepare the build, edit the `Makefile`, and set the `TARGET_BOARD` to `TARGET_BOARD_IS_BLE_NANO`:
+
+    #
+    # Indicate the target device (nRF51-DK or BLE Nano).
+    #
+    TARGET_BOARD := TARGET_BOARD_IS_BLE_NANO
+    #TARGET_BOARD := TARGET_BOARD_IS_NRF51_DK
+
+
+To compile with a command line, type the following commands:
+
+    make
+    make nrf51422_xxac_s110 package
+
+Then plug the RedBearLab Nano board to the [MK20 USB board](http://redbearlab.com/blenano/#mk20usbboard) 
+(the first time you will need to solder wires between the MK20 USB board and two 6 pins 0.1" male headers).
+
+Finally copy the file `_build/nrf51422_xxac_s110_packed.hex` into the MBED drive (this USB drive appears when you
+plug the MK20 USB board to the computer).
+
 ### Compile, flash and debug with the nRF51 DK board
 The [nRF51 DK](https://www.nordicsemi.com/eng/Products/nRF51-DK) is very convenient for prototyping with a breadboard.
 
@@ -108,26 +131,3 @@ To debug with Eclipse:
   Next to "Device name", put `nRF51822_xxAC`.
 * Select the Startup tab. Un-tick the Enable SWO box.
 * Click on "Debug".
-
-### Compile and flash for the RedBearLab Nano board
-A detailed tutorial about how to compile and flash the board is [available here](http://redbearlab.com/nrf51822-sdk).
-
-To prepare the build, edit the `Makefile`, and set the `TARGET_BOARD` to `TARGET_BOARD_IS_BLE_NANO`:
-
-    #
-    # Indicate the target device (nRF51-DK or BLE Nano).
-    #
-    TARGET_BOARD := TARGET_BOARD_IS_BLE_NANO
-    #TARGET_BOARD := TARGET_BOARD_IS_NRF51_DK
-
-
-To compile with a command line, type the following commands:
-
-    make
-    make nrf51422_xxac_s110 package
-
-Then plug the RedBearLab Nano board to the [MK20 USB board](http://redbearlab.com/blenano/#mk20usbboard) 
-(the first time you will need to solder wires between the MK20 USB board and two 6 pins 0.1" male headers).
-
-Finally copy the file `_build/nrf51422_xxac_s110_packed.hex` into the MBED drive (this USB drive appears when you
-plug the MK20 USB board to the computer).
