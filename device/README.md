@@ -138,10 +138,22 @@ As you can see on the schema, 0.1" headers must be prepared at the following siz
 As you can see, the RedBearLab Nano have more soldered wires connected to headers than necessary, but it is useful
 for flashing the microcontroller by connecting it to the [MK20 USB Board](http://redbearlab.com/blenano/#mk20usbboard).
 
-The following photo shows the wires soldered and connected to each others (bigger resolution is
-[available here](wiring/photo_wired_components.jpg))
+The following photo shows the wires soldered and connected to each others (a bigger resolution is
+[available here](wiring/photo_wired_components.jpg)):
 
 ![Connected wires photo](wiring/photo_wired_components_small.jpg?raw=true "Connected wires photo")
+
+Positioning wires on the front cover is much simpler, no need to prepare a shema for that, the following photo
+is clear enough:
+
+![Front wires photo](wiring/photo_wire_positioning_front.jpg?raw=true "Front wires photo")
+
+The following photos shows both covers with connected components (a bigger resolution is
+[available here](wiring/photo_components_placed_and_connected.jpg)):
+
+![Connected components photo](wiring/photo_components_placed_and_connected_small.jpg?raw=true "Connected components photo")
+
+
 
 ### Compile and flash the firmware
 Comming soon...
