@@ -27,8 +27,9 @@ by AdaFruit.
 
 The GSM module is an [AdaFruit FONA](https://www.adafruit.com/product/1946) powered with a
 [SIM800](http://simcomm2m.com/En/module/detail.aspx?id=138) chip. It handles voice calls and provides an
-internet connection. A typical [SIM card](https://en.wikipedia.org/wiki/Subscriber_identity_module) is necessary
-(there is a socket under the board). In addition, this module can even recharge a LiPo battery.
+internet connection. A typical [SIM card](https://en.wikipedia.org/wiki/Subscriber_identity_module)
+(there is a socket under the board) and a [uFL GSM Antenna](https://www.adafruit.com/product/1991) are necessary.
+In addition, this module can even recharge a LiPo battery.
 
 Finally, the device also contains a [1200mAh LiPo battery](https://www.adafruit.com/product/258),
 a [8 ohm 0.5W speaker](https://www.adafruit.com/product/1890),
@@ -153,7 +154,27 @@ The following photos shows both covers with connected components (a bigger resol
 
 ![Connected components photo](wiring/photo_components_placed_and_connected_small.jpg?raw=true "Connected components photo")
 
+### Electromagnetic shielding
+There is a missing but important component is the previous photo: the GSM antenna. If you "naively" put it inside the
+case you will experience unexpected resets because the GSM signal interferes with the microcontroller.
 
+To solve this problem, you can create a layer of [aluminium foil](https://en.wikipedia.org/wiki/Aluminium_foil)
+in sandwich between two layers of paper. And then put this in the middle of the case with the RedBearLab Nano on one
+side (back cover side) and the GSM antenna on the other side (front cover side).
+
+The following photos show how you can reproduce this protection:
+
+* Electromagnetic shield width ([bigger resolution](electromagnetic_shield/photo_shield_width.jpg))):
+
+![Shield width](electromagnetic_shield/photo_shield_width_small.jpg?raw=true "Shield width")
+
+* Electromagnetic shield height ([bigger resolution](electromagnetic_shield/photo_shield_height.jpg))):
+
+![Shield height](electromagnetic_shield/photo_shield_height_small.jpg?raw=true "Shield height")
+
+* Electromagnetic shield in place ([bigger resolution](electromagnetic_shield/photo_shield_in_place.jpg))):
+
+![in place](electromagnetic_shield/photo_shield_in_place_small.jpg?raw=true "Shield in place")
 
 ### Compile and flash the firmware
 Comming soon...
