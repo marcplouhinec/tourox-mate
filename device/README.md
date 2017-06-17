@@ -128,5 +128,20 @@ is [available here](wiring/photo_wire_positioning.jpg)):
 
 ![Wire positioning photo](wiring/photo_wire_positioning_small.jpg?raw=true "Wire positioning photo")
 
+As you can see on the schema, 0.1" headers must be prepared at the following size:
+* 6 pins for connecting the RedBearLab Nano with the Adafruit FONA.
+* 4 pins for connecting the Adafruit FONA with the speaker and microphone (the schema shows 5 pins but you can put less).
+* 6 pins for connecting the RedBearLab Nano with the tactile buttons and battery.
+* 3 pins for connecting the RedBearLab Nano with the screen (the schema shows 5 pins but you can put less).
+* 2 pins for connecting the screen with the battery.
+
+As you can see, the RedBearLab Nano have more soldered wires connected to headers than necessary, but it is useful
+for flashing the microcontroller by connecting it to the [MK20 USB Board](http://redbearlab.com/blenano/#mk20usbboard).
+
+The following photo shows the wires soldered and connected to each others (bigger resolution is
+[available here](wiring/photo_wired_components.jpg))
+
+![Connected wires photo](wiring/photo_wired_components_small.jpg?raw=true "Connected wires photo")
+
 ### Compile and flash the firmware
 Comming soon...
