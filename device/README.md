@@ -34,7 +34,9 @@ Finally, the device also contains a [1200mAh LiPo battery](https://www.adafruit.
 a [8 ohm 0.5W speaker](https://www.adafruit.com/product/1890),
 an [electret microphone](https://www.adafruit.com/product/1064),
 two [tactile buttons](https://www.adafruit.com/product/367),
-and a [SPDT Slide Switch](https://www.adafruit.com/product/805).
+a [SPDT Slide Switch](https://www.adafruit.com/product/805),
+[stranded-core 22AWG wires](https://www.adafruit.com/product/3111),
+[0.1" male](https://www.adafruit.com/product/392) and [female headers](https://www.adafruit.com/product/598).
 
 ## Building steps
 
@@ -112,7 +114,19 @@ If you are lucky, the result should look like this:
 ![3D printed cases](3dmodel/3d_printed_cases.jpg?raw=true "3D printed cases")
 
 ### Wiring
-Comming soon...
+Now that the case is ready, it is time to add electronic components in it!
+
+Because 22AWG wire are quite thick, it is important to place components in order to avoid too many wire crossings.
+The following schema is useful for preparing wires before soldering them on the back cover:
+
+![Wire positioning](wiring/wire_positioning.png?raw=true "Wire positioning")
+
+To print this schema with the right size, install [LibreOffice](https://www.libreoffice.org/), open and print the file
+`wiring/wire_positioning.odg`.
+The following photo shows how to prepare the wires according to this schema (the same photo at bigger resolution
+is [available here](wiring/photo_wire_positioning.jpg)):
+
+![Wire positioning photo](wiring/photo_wire_positioning_small.jpg?raw=true "Wire positioning photo")
 
 ### Compile and flash the firmware
 Comming soon...
