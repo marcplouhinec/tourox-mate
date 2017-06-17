@@ -164,17 +164,27 @@ side (back cover side) and the GSM antenna on the other side (front cover side).
 
 The following photos show how you can reproduce this protection:
 
-* Electromagnetic shield width ([bigger resolution](electromagnetic_shield/photo_shield_width.jpg))):
+* Electromagnetic shield width ([bigger resolution](electromagnetic_shield/photo_shield_width.jpg)):
 
 ![Shield width](electromagnetic_shield/photo_shield_width_small.jpg?raw=true "Shield width")
 
-* Electromagnetic shield height ([bigger resolution](electromagnetic_shield/photo_shield_height.jpg))):
+* Electromagnetic shield height ([bigger resolution](electromagnetic_shield/photo_shield_height.jpg)):
 
 ![Shield height](electromagnetic_shield/photo_shield_height_small.jpg?raw=true "Shield height")
 
-* Electromagnetic shield in place ([bigger resolution](electromagnetic_shield/photo_shield_in_place.jpg))):
+* Electromagnetic shield in place ([bigger resolution](electromagnetic_shield/photo_shield_in_place.jpg)):
 
 ![in place](electromagnetic_shield/photo_shield_in_place_small.jpg?raw=true "Shield in place")
 
 ### Compile and flash the firmware
-Comming soon...
+This is the step where you will discover all your wiring or soldering mistakes! :-)
+
+[Please follow this guide in order to build an flash the firmware.](firmware/README.md)
+
+If everything works as expected, you should see it working!
+
+![Working device 1](working_device_1.jpg?raw=true "Working device 1")
+![Working device 2](working_device_2.jpg?raw=true "Working device 2")
+
+To actually use your device, you also need to build the Android and server applications. Please follow the
+next instructions in the [parent document](../README.md).

@@ -1,0 +1,1 @@
+Example used as a basis for the tutorial https://devzone.nordicsemi.com/tutorials/8/ble-services-a-beginners-tutorial/.
