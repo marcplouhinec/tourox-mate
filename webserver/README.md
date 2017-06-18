@@ -1,10 +1,10 @@
 # Tourox Webserver
 
 ## Introduction
-The goal of the Tourox webserver is to collect the tourist device geolocations, and allow the tour guide to view
+The goal of the Tourox webserver is to collect tourist device geolocations, and allow the tour guide to view
 them on a map.
 
-Warning: the current version of this server is a prototype so all information is public (no access check).
+Warning: the current version of this server is a prototype so all information is public (no access enforcement).
 
 ## Technologies
 * [Java 8](http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
@@ -54,4 +54,44 @@ Start the service:
 The logs are located in the folder /var/log/touroxwebserver.
 
 ## Usage
-Coming soon...
+The webserver is not meant to be directly used by a human, but testing can be done with [curl](https://curl.haxx.se/).
+
+To add some device location into the database, type the following command in a terminal:
+
+    curl http://<hostname>:<port>/sl/<device IMEI>/<longitude>/<latitude>
+    
+Example:
+
+    curl http://localhost:8080/sl/012345678901234/6.101516/49.607767
+    curl http://localhost:8080/sl/012345678955555/6.112162/49.606249
+    
+To read the location of all devices, type the following command:
+
+    curl http://<hostname>:<port>/device/locations
+    
+Example:
+
+    curl http://localhost:8080/device/locations
+
+Example result:
+```json
+[
+  {
+    "id": 1,
+    "imei": "012345678901234",
+    "latitude": 49.607767,
+    "longitude": 6.101516,
+    "lastUpdateDate": 1497810099518
+  },
+  {
+    "id": 2,
+    "imei": "012345678955555",
+    "latitude": 49.606249,
+    "longitude": 6.112162,
+    "lastUpdateDate": 1497810141561
+  }
+]
+```
+
+You can also browse the URL `http://<hostname>:<port>` with a web browser like [Mozilla Firefox](https://www.mozilla.org/)
+to see a map with device locations.
