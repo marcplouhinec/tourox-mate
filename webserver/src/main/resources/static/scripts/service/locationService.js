@@ -27,7 +27,7 @@ var locationService = {
                 callback(deviceLocations);
             }
         };
-        xhttp.open('GET', '/device/locations', true);
+        xhttp.open('GET', 'device/locations', true);
         xhttp.send();
     }
 
