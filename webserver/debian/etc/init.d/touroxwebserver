@@ -1,0 +1,30 @@
+#!/bin/sh
+
+DAEMON="/usr/bin/java"
+DAEMON_ARGS="-Xmx300M -Dserver.port=9095 -cp /etc/touroxwebserver:/usr/local/lib/touroxwebserver/touroxwebserver.jar org.springframework.boot.loader.JarLauncher"
+PIDFILE="/var/run/touroxwebserver.pid"
+
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+        log_action_begin_msg "Starting Tourox Webserver"
+        /sbin/start-stop-daemon --start --chuid touroxwebserver:nogroup --background --pidfile "$PIDFILE" --make-pidfile --exec "$DAEMON" -- $DAEMON_ARGS
+        log_action_end_msg $?
+        ;;
+    stop)
+        log_action_begin_msg "Stopping Tourox Webserver"
+        /sbin/start-stop-daemon --stop --pidfile "$PIDFILE" --exec "$DAEMON" -- $DAEMON_ARGS
+        log_action_end_msg $?
+        ;;
+    force-reload|restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: /etc/init.d/touroxwebserver {start|stop|restart|force-reload}"
+        exit 1
+        ;;
+esac
+
+exit 0

@@ -1,0 +1,4 @@
+#!/bin/bash
+adduser --system touroxwebserver
+chown -R touroxwebserver:nogroup /var/log/touroxwebserver
+chown -R touroxwebserver:nogroup /etc/touroxwebserver

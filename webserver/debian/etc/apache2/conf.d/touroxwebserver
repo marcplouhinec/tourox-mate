@@ -1,0 +1,10 @@
+ProxyPass         /tourox  http://localhost:9095/ nocanon
+ProxyPassReverse  /tourox  http://localhost:9095/
+ProxyRequests     Off
+ProxyPreserveHost On
+AllowEncodedSlashes NoDecode
+
+<Proxy http://localhost:9095/*>
+  Order deny,allow
+  Allow from all
+</Proxy>
