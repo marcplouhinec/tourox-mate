@@ -36,7 +36,7 @@ Technically, Tourox Mate is made of the following parts:
 ## Build
 Please follow the following instructions if you want to build Tourox Mate yourself:
 1. [Build the physical device.](device/README.md)
-2. Build and setup the web-server (coming soon...)
+2. [Build and setup the web-server](webserver/README.md)
 2. Build and setup the tour guide Android application (coming soon...)
 
 ## Test
