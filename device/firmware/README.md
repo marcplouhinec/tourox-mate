@@ -68,6 +68,33 @@ To solve some missing header file errors:
 
 ## Compile the firmware
 
+### Firmware configuration
+The firmware needs the URL of the [webserver](../../webserver) where it will send the device location. It means that
+you need to have a server with a public IP address that the device can reach from the GPRS connection.
+
+If you want you can pause here and start installing the [webserver](../../webserver). Once you have the URL of your
+server, you can resume this firmware configuration. A typical URL would be "http://myhostname.com/tourox/".
+
+To configure the firmware, open the file `service/service_geolocation.c` and find the following constants:
+```c
+#define SEND_GEOLOCATION_URL               "http://www.tourox.io/sl/imeiimeiimeiime/-xx.dddddd/-xx.dddddd"
+#define SEND_GEOLOCATION_URL_LENGTH        (sizeof(SEND_GEOLOCATION_URL))
+#define SEND_GEOLOCATION_URL_IMEI_POS      (sizeof("http://nwww.tourox.io/sl"))
+#define SEND_GEOLOCATION_URL_LNGLAT_POS    (sizeof("http://www.tourox.io/sl/imeiimeiimeiime"))
+```
+replace them by
+```c
+#define SEND_GEOLOCATION_URL               "http://myhostname.com/tourox/sl/imeiimeiimeiime/-xx.dddddd/-xx.dddddd"
+#define SEND_GEOLOCATION_URL_LENGTH        (sizeof(SEND_GEOLOCATION_URL))
+#define SEND_GEOLOCATION_URL_IMEI_POS      (sizeof("http://myhostname.com/tourox/sl"))
+#define SEND_GEOLOCATION_URL_LNGLAT_POS    (sizeof("http://myhostname.com/tourox/sl/imeiimeiimeiime"))
+```
+
+> Note the pattern: replace "http://www.tourox.io/" with your URL "http://myhostname.com/tourox/".
+
+In fact it is a bad practice to hardcode an URL inside a firmware. Instead, a better solution would be to set
+it each time the Android application configures the device. But it is good enough for a prototype. :-)
+
 ### Compile and flash for the RedBearLab Nano board
 A detailed tutorial about how to compile and flash the board is [available here](http://redbearlab.com/nrf51822-sdk).
 

@@ -39,5 +39,5 @@ Please follow the following instructions if you want to build Tourox Mate yourse
 2. [Build and setup the web-server](webserver/README.md)
 2. Build and setup the tour guide Android application (coming soon...)
 
-## Test
+## Usage
 Coming soon...
