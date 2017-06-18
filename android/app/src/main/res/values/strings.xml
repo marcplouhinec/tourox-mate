@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Tourox Device Tester</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="please_select_device">Please select a device:</string>
+    <string name="scan_button">Scan</string>
+    <string name="scanning_button">Scanning…</string>
+    <string name="error_ble_unavailable">Sorry, the application cannot work without bluetooth :(</string>
+
+    <string name="connect_button">Connect</string>
+    <string name="connecting_button">Connecting…</string>
+    <string name="disconnect_button">Disconnect</string>
+
+    <string name="title_activity_device">DeviceActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="textview_commands">Commands:</string>
+    <string name="command_name_textview">Command Name</string>
+    <string name="set_current_time_button">Set current time</string>
+    <string name="or_textview">--or--</string>
+    <string name="set_fixed_time_button">Set</string>
+    <string name="set_current_proximity_level_button">Set current proximity level</string>
+    <string name="setting_current_proximity_level_button">Setting current proximity level…</string>
+    <string name="set_tour_info_button">Set tour information</string>
+    <string name="clear_tour_information_button">Clear tour information</string>
+    <string name="cancel_help_request_button">Cancel help request</string>
+    <string name="set_gathering_button">Set gathering</string>
+    <string name="sample_gathering_description">The gathering place is just in front of the town hall.</string>
+    <string name="cancel_gathering_button">Cancel gathering</string>
+    <string name="set_time_textview">Set Time</string>
+    <string name="set_proximity_level_textview">Set proximity Level</string>
+    <string name="set_tour_information_textview">Set Tour Information</string>
+    <string name="clear_tour_information_textview">Clear Tour Information</string>
+    <string name="cancel_help_request_textview">Cancel Help Request</string>
+    <string name="schedule_gathering_textview">Schedule a Gathering</string>
+    <string name="unschedule_gathering_textview">Unschedule a Gathering</string>
+    <string name="sim_card_pin_number_textview">SIM pin code: </string>
+    <string name="guide_phone_number_textview">Guide phone: </string>
+    <string name="apn_textview">APN: </string>
+    <string name="apn_username_textview">APN username: </string>
+    <string name="apn_password_textview">APN password: </string>
+    <string name="sample_sim_card_pin_number">7836</string>
+    <string name="sample_guide_phone_number">+352621450426</string>
+    <string name="sample_apn">web.pt.lu</string>
+
+    <string-array name="proximity_level_array">
+        <item>VERY_FAR</item>
+        <item>FAR</item>
+        <item>AVERAGE</item>
+        <item>CLOSE</item>
+        <item>VERY_CLOSE</item>
+    </string-array>
+</resources>
