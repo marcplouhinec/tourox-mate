@@ -39,9 +39,8 @@ Adapt the Apache configuration file:
 
     cd /etc/touroxwebserver
     vi logback.xml
-    cd /etc/apache2/sites-available
+    cd /etc/apache2/conf.d
     vi touroxwebserver
-    ln -s /etc/apache2/sites-available/touroxwebserver /etc/apache2/sites-enabled/touroxwebserver
 
 > Warning: the server IP must be accessible from internet, if not the device will not be able to connect to the server
 > via its GPRS connection.
