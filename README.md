@@ -57,9 +57,7 @@ It allows you to execute the following actions:
 * Configure a tour with the following properties:
   * The SIM card PIN number.
   * The [APN](https://en.wikipedia.org/wiki/Access_Point_Name) with the corresponding username and password.
-    Theses values can be found on the telecom provider contract or support website.
-    Theses properties are necessary for the device to connect itself to internet and send its 
-    geolocation to the webserver.
+    These values can be found on the telecom provider contract or support website.
   * The tour guide phone number. It is the number the device will call when the tourist presses the "HELP" button.
 * Clear the tour configuration.
 * Cancel a help request on the device.
@@ -88,10 +86,10 @@ When the tour guide schedules a gathering, the device shows the gathering descri
 
 ![Gathering](readme_resources/photo_gathering.jpg?raw=true "Gathering")
 
-Canceling a gathering revert the device to its normal state.
+Canceling a gathering reverts the device to its normal state.
 
 Finally, to disconnect the device from internet, the tour guide can clear the tour configuration.
 
 ___
 
-Thank you for reading! don't hesitate to contact me if you have remarks or questions!
+Thank you for reading! don't hesitate to contact me if you have any remark or question!
