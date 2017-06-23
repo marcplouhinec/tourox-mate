@@ -49,7 +49,7 @@ Android device. The Android application scans for bluetooth devices and quickly 
 
 When you select this device, the following screen opens:
 
-![Device activity](readme_resources/device_activity.png?raw=true "Device activity")
+![Device activity](readme_resources/device_activity_small.png?raw=true "Device activity")
 
 It allows you to execute the following actions:
 * Set the device time.
