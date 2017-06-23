@@ -192,7 +192,7 @@ Detailed information about how to setup [Eclipse IDE](https://www.eclipse.org) c
    ```bash
    arm-none-eabi-gcc --version
    ```
-   The result should be something like:
+   The result should be something like this:
    ```text
    arm-none-eabi-gcc (GNU Tools for ARM Embedded Processors 6-2017-q1-update) 6.3.1 20170215 (release) [ARM/embedded-6-branch revision 245512]
    Copyright (C) 2016 Free Software Foundation, Inc.
@@ -209,7 +209,7 @@ Detailed information about how to setup [Eclipse IDE](https://www.eclipse.org) c
      ```bash
      make -v
      ```
-     The result should be something like:
+     The result should be something like this:
      ```text
      GNU Make 3.81
      Copyright (C) 2006  Free Software Foundation, Inc.
@@ -228,7 +228,7 @@ Detailed information about how to setup [Eclipse IDE](https://www.eclipse.org) c
      ```bash
      mergehex --version
      ```
-     The result should be something like:
+     The result should be something like this:
      ```text
      mergehex version: 9.5.0
      ```
@@ -249,10 +249,10 @@ Detailed information about how to setup [Eclipse IDE](https://www.eclipse.org) c
   * `SDK_PATH` with the path where you unzipped the Nordic nRF5x SDK (e.g. `/opt/nRF51_SDK_8.1.0_b6ed55f`).
 
 #### Configure the firmware
-The firmware needs the URL of the [webserver](../../webserver) where it will send the device location. It means that
+The firmware needs the URL of the [webserver](../webserver) where it will send the device location. It means that
 you need to have a server with a public IP address that the device can reach from the GPRS connection.
 
-If you want you can pause here and start installing the [webserver](../../webserver). Once you have the URL of your
+If you want you can pause here and start installing the [webserver](../webserver). Once you have the URL of your
 server, you can resume this firmware configuration. A typical URL would be "http://myhostname.com/tourox/".
 
 To configure the firmware, open the file `service/service_geolocation.c` and find the following constants:
@@ -276,8 +276,6 @@ In fact it is a bad practice to hardcode an URL inside a firmware. Instead, a be
 it each time the Android application configures the device. But it is good enough for a prototype. :-)
 
 #### Compile the firmware
-A detailed tutorial about how to compile and flash the board is [available here](http://redbearlab.com/nrf51822-sdk).
-
 To compile with a command line, type the following commands:
 ```bash
 make
@@ -289,10 +287,12 @@ The [MK20 USB board](http://redbearlab.com/blenano/#mk20usbboard) is necessary f
 
 ![MK20 board with Nano](readme_resources/mk20_board_with_nano.jpg?raw=true "MK20 board with Nano")
 
-Wires and headers must be soldered on the MK20 USB board. The wire color code must be the same as the Nano board:
+Solder wires and headers on the MK20 USB board. The wire color code must be the same as the Nano board:
 
 ![MK20 wiring 1](readme_resources/mk20_wiring_1.jpg?raw=true "MK20 wiring 1")
 ![MK20 wiring 2](readme_resources/mk20_wiring_2.jpg?raw=true "MK20 wiring 2")
+
+A detailed tutorial about how to compile and flash the board is [available here](http://redbearlab.com/nrf51822-sdk).
 
 #### Flash the RedBearLab Nano board
 Plug the RedBearLab Nano board to the MK20 USB board and the later to the computer:
