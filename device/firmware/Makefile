@@ -29,7 +29,7 @@ export OUTPUT_FILENAME
 MAKEFILE_NAME := $(MAKEFILE_LIST)
 MAKEFILE_DIR := $(dir $(MAKEFILE_NAME) ) 
 
-SDK_PATH = C:/nrf51workspace/nRF51_SDK_8.1.0
+SDK_PATH = /opt/nRF51_SDK_8.1.0_b6ed55f
 TEMPLATE_PATH = $(SDK_PATH)/components/toolchain/gcc
 ifeq ($(OS),Windows_NT)
 include $(TEMPLATE_PATH)/Makefile.windows

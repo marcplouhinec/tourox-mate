@@ -179,12 +179,136 @@ The following photos show how you can reproduce this protection:
 ### Compile and flash the firmware
 This is the step where you will discover all your wiring or soldering mistakes! :-)
 
-[Please follow this guide in order to build an flash the firmware.](firmware/README.md)
+#### Setup development environment
+The following section describes briefly how to setup your environment in order to compile the firmware with
+[GCC](https://gcc.gnu.org/).
+
+Detailed information about how to setup [Eclipse IDE](https://www.eclipse.org) can be found in
+[this tutorial](https://devzone.nordicsemi.com/tutorials/7/development-with-gcc-and-eclipse/) from Nordic Semiconductor.
+
+1. Setup the [GNU toolchain for ARM Cortex-M](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads).
+2. Add the toolchain into the PATH environment variable. To check if it is correctly set, open a new terminal
+   and type the following command:
+   ```bash
+   arm-none-eabi-gcc --version
+   ```
+   The result should be something like:
+   ```text
+   arm-none-eabi-gcc (GNU Tools for ARM Embedded Processors 6-2017-q1-update) 6.3.1 20170215 (release) [ARM/embedded-6-branch revision 245512]
+   Copyright (C) 2016 Free Software Foundation, Inc.
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+   ```
+3. Setup GNU Make:
+  * On Linux, setup the package provided by your distribution, like `build-essential` on Debian.
+  * On Windows, setup the GNU ARM Eclipse Windows Build Tools package from the
+    [GNU ARM Eclipse plug-in project](http://gnuarmeclipse.github.io/windows-build-tools/).
+  * On MAC OSX, setup the 
+    [Xcode tools](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/gnumake.1.html).
+  * Check the result by opening a new terminal and by typing the following command:
+     ```bash
+     make -v
+     ```
+     The result should be something like:
+     ```text
+     GNU Make 3.81
+     Copyright (C) 2006  Free Software Foundation, Inc.
+     This is free software; see the source for copying conditions.
+     There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+     PARTICULAR PURPOSE.
+     
+     This program built for i386-apple-darwin11.3.0
+     ```
+4. Setup the nRF5x-Command-Line-Tools
+  * Download the nRF5x-Command-Line-Tools from the 
+    [Nordic Semiconductor download page](https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF51822).
+  * On Linux and MAC OSX, unzip the tools archive and add `<nRF5x-Command-Line-Tools>/mergehex` into the PATH
+    environment variable.
+  * Check the result by opening a new terminal and by typing the following command:
+     ```bash
+     mergehex --version
+     ```
+     The result should be something like:
+     ```text
+     mergehex version: 9.5.0
+     ```
+5. Download and unzip the [Nordic nRF5x SDK 8.1.0](http://developer.nordicsemi.com/) (a greater version may not be
+   compatible).
+6. Edit the SDK Makefile with a text editor:
+  * On Linux and MAC OSX, open `<SDK>/components/toolchain/gcc/Makefile.posix`.
+  * On Windows, open `<SDK>/components/toolchain/gcc/Makefile.posix`.
+  * Replace the `GNU_INSTALL_ROOT` property value by the path where you setup the GNU toolchain and `GNU_VERSION`
+    by the toolchain version:
+    ```text
+    GNU_INSTALL_ROOT := /opt/gcc-arm-none-eabi-6-2017-q1-update
+    GNU_VERSION := 6.3.1
+    GNU_PREFIX := arm-none-eabi
+    ```
+7. With a text editor open the project file `device/firmware/Makefile` and replace the following property values:
+  * `TARGET_BOARD` with `TARGET_BOARD_IS_BLE_NANO`
+  * `SDK_PATH` with the path where you unzipped the Nordic nRF5x SDK (e.g. `/opt/nRF51_SDK_8.1.0_b6ed55f`).
+
+#### Configure the firmware
+The firmware needs the URL of the [webserver](../../webserver) where it will send the device location. It means that
+you need to have a server with a public IP address that the device can reach from the GPRS connection.
+
+If you want you can pause here and start installing the [webserver](../../webserver). Once you have the URL of your
+server, you can resume this firmware configuration. A typical URL would be "http://myhostname.com/tourox/".
+
+To configure the firmware, open the file `service/service_geolocation.c` and find the following constants:
+```c
+#define SEND_GEOLOCATION_URL               "http://www.tourox.io/sl/imeiimeiimeiime/-xx.dddddd/-xx.dddddd"
+#define SEND_GEOLOCATION_URL_LENGTH        (sizeof(SEND_GEOLOCATION_URL))
+#define SEND_GEOLOCATION_URL_IMEI_POS      (sizeof("http://nwww.tourox.io/sl"))
+#define SEND_GEOLOCATION_URL_LNGLAT_POS    (sizeof("http://www.tourox.io/sl/imeiimeiimeiime"))
+```
+replace them by
+```c
+#define SEND_GEOLOCATION_URL               "http://myhostname.com/tourox/sl/imeiimeiimeiime/-xx.dddddd/-xx.dddddd"
+#define SEND_GEOLOCATION_URL_LENGTH        (sizeof(SEND_GEOLOCATION_URL))
+#define SEND_GEOLOCATION_URL_IMEI_POS      (sizeof("http://myhostname.com/tourox/sl"))
+#define SEND_GEOLOCATION_URL_LNGLAT_POS    (sizeof("http://myhostname.com/tourox/sl/imeiimeiimeiime"))
+```
+
+> Note the pattern: replace "http://www.tourox.io/" with your URL "http://myhostname.com/tourox/".
+
+In fact it is a bad practice to hardcode an URL inside a firmware. Instead, a better solution would be to set
+it each time the Android application configures the device. But it is good enough for a prototype. :-)
+
+#### Compile the firmware
+A detailed tutorial about how to compile and flash the board is [available here](http://redbearlab.com/nrf51822-sdk).
+
+To compile with a command line, type the following commands:
+```bash
+make
+make nrf51422_xxac_s110 package
+```
+
+#### Prepare the MK20 USB board
+The [MK20 USB board](http://redbearlab.com/blenano/#mk20usbboard) is necessary for flashing the Nano board:
+
+![MK20 board with Nano](readme_resources/mk20_board_with_nano.jpg?raw=true "MK20 board with Nano")
+
+Wires and headers must be soldered on the MK20 USB board. The wire color code must be the same as the Nano board:
+
+![MK20 wiring 1](readme_resources/mk20_wiring_1.jpg?raw=true "MK20 wiring 1")
+![MK20 wiring 2](readme_resources/mk20_wiring_2.jpg?raw=true "MK20 wiring 2")
+
+#### Flash the RedBearLab Nano board
+Plug the RedBearLab Nano board to the MK20 USB board and the later to the computer:
+
+![Flash Nano board](readme_resources/flashing_nano_board.jpg?raw=true "Flash Nano board")
+
+A new USB drive will appear with the "MBED" name.
+Copy the file `_build/nrf51422_xxac_s110_packed.hex` into this drive.
+
+After few seconds the MBED drive will refresh itself without the .hex file you just copied. At this stage, unplug the
+board and put back the Nano into the Tourox case and close it.
 
 If everything works as expected, you should see it working!
 
-![Working device 1](working_device_1.jpg?raw=true "Working device 1")
-![Working device 2](working_device_2.jpg?raw=true "Working device 2")
+![Working device 1](readme_resources/working_device_1.jpg?raw=true "Working device 1")
+![Working device 2](readme_resources/working_device_2.jpg?raw=true "Working device 2")
 
 To actually use your device, you also need to build the Android and server applications. Please follow the
 next instructions in the [parent document](../README.md).
